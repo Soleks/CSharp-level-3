@@ -5,18 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" >
+        Title="MainWindow" Height="300" Width="800" >
     <Window.DataContext>
         <local:VM/>
     </Window.DataContext>
     <Grid>
-        <Button 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Тема:" HorizontalAlignment="Right"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Сообщение:" HorizontalAlignment="Right" />
+        <Label Grid.Column="0" Grid.Row="2" Content="Пароль:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" MinLines="3"/>
+        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Pass, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
             Content="Отправить email" 
             HorizontalAlignment="Left"
-            Margin="240,263,0,0" 
             VerticalAlignment="Top" 
             Width="124" 
-            RenderTransformOrigin="0.5,0.5"
             Command="{Binding SendCommand}">
             <Button.Resources>
                 <ResourceDictionary>
@@ -26,13 +41,5 @@
                 </ResourceDictionary>
             </Button.Resources>
         </Button>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="240,80,0,0" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284"/>
-        <TextBox HorizontalAlignment="Left" Height="86" Margin="240,108,0,0" TextWrapping="Wrap" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="240,224,0,0" TextWrapping="Wrap" Text="{Binding Pass, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284"/>
-        <Label Content="Тема:" HorizontalAlignment="Left" Margin="192,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.291,-0.182" Width="43" Height="23" FontSize="7" />
-        <Label Content="Сообщение:" HorizontalAlignment="Left" Margin="181,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.291,-0.182" Width="54" Height="23" FontSize="7" />
-        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="192,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.291,-0.182" Width="38" Height="23" FontSize="7" />
-        
-        
     </Grid>
 </Window>
