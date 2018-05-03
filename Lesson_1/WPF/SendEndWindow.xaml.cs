@@ -12,7 +12,7 @@ namespace WPF
 			InitializeComponent();
 		}
 
-		private void BtnOK_OnClick(object sender, RoutedEventArgs e)
+        private void BtnOK_OnClick(object sender, RoutedEventArgs e)
 		{
 
 		}

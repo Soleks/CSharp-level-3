@@ -9,6 +9,5 @@
     <Grid>
         <Label x:Name="lSendEnd" Content="Работа завершена" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="36" FontFamily="Algerian"/>
         <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="91,108,0,0" VerticalAlignment="Top" Width="111" Height="28" Click="BtnOK_OnClick"/>
-
     </Grid>
 </Window>
