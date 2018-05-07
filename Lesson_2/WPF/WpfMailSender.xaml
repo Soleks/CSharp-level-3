@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="Auto" Width="Auto" >
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:VM/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <Grid>
         <TabControl HorizontalAlignment="Stretch" Margin="0,0,394,0" Grid.ColumnSpan="2">
             <TabItem Header="Отправка письма" Width="Auto" HorizontalAlignment="Stretch">

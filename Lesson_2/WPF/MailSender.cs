@@ -8,7 +8,7 @@ using WPF.Dto;
 
 namespace WPF
 {
-    public class MailSender
+    public class MailSender : IMailSender
     {
         private DbClientTest _dbTest;
         private ObservableCollection<Dto.Email> _email;

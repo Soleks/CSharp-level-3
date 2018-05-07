@@ -4,15 +4,16 @@ using System.Windows.Input;
 
 namespace WPF
 {
-    internal class VM : INotifyPropertyChanged
+    public class VM : INotifyPropertyChanged
     {
-        private MailSender _sender = new MailSender();
+        private IMailSender _sender;
         private ActionCommand _send;
         private ObservableCollection<Dto.Email> _emails;
         private ObservableCollection<Dto.SmtpSettings> _smtp;
         
-        public VM()
+        public VM(IMailSender sender)
         {
+            _sender = sender;
             Emails = _sender.SelectEmails();
             Smtp = _sender.SelectSmtpSettings();
         }
