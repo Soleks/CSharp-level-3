@@ -39,8 +39,8 @@ namespace WPF
                 {
                     while (reader.Read())
                     {
-                        string email = reader.GetString(0);
-                        string passwd = reader.GetString(1);
+                        string email = reader.GetString(1);
+                        string passwd = reader.GetString(2);
                        
                         _emails.Add(
                             new Dto.Email() { UserEmail = email, Password = passwd });
@@ -70,13 +70,7 @@ namespace WPF
                     while (reader.Read())
                     {
                         string address = reader.GetString(0);
-                        int port;
-
-                        if (!int.TryParse(reader.GetString(1), out port))
-                        {
-                            Console.WriteLine("Attempted conversion of '{0}' failed.",
-                               reader.GetString(1) == null ? "<null>" : reader.GetString(1));
-                        }
+                        int port = reader.GetInt32(1);
 
                         _smtpSettings.Add(
                             new Dto.SmtpSettings() { Address = address,  Port = port });

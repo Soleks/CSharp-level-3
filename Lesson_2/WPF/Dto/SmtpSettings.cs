@@ -8,5 +8,10 @@ namespace WPF.Dto
         public string Address { get; set; }
         [JsonProperty(PropertyName = "Port")]
         public int Port { get; set; }
+
+        public override string ToString()
+        {
+            return Address;
+        }
     }
 }

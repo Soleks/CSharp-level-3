@@ -10,34 +10,27 @@
         <local:VM/>
     </Window.DataContext>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
         <TabControl HorizontalAlignment="Stretch" Margin="0,0,394,0" Grid.ColumnSpan="2">
             <TabItem Header="Отправка письма" Width="Auto" HorizontalAlignment="Stretch">
-                <StackPanel Width="Auto" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="88*" />
+                        <ColumnDefinition Width="195*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" Content="Отправитель:" HorizontalAlignment="Left"/>
-                    <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" />
-                    <Label Grid.Column="0" Grid.Row="2" Content="Пароль:" HorizontalAlignment="Left"/>
-                    <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Pass, UpdateSourceTrigger=PropertyChanged}" />
-
-                    <Label Grid.Column="0" Grid.Row="0" Content="Получатель:" HorizontalAlignment="Left"/>
-                    <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" />
-
-                    <Label Grid.Column="0" Grid.Row="0" Content="Тема:" HorizontalAlignment="Left"/>
-                    <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" />
-                    <Label Grid.Column="0" Grid.Row="1" Content="Сообщение:" HorizontalAlignment="Left" />
-                    <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" MinLines="3"/>
-
+                    <Label Grid.Column="0" Grid.Row="0" Content="Тема:" HorizontalAlignment="Right"/>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Сообщение:" HorizontalAlignment="Right" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Пароль:" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Theme, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" />
+                    <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" MinLines="3" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Pass, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" />
                     <Button
                         Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
                         Content="Отправить email"
@@ -51,7 +44,7 @@
                             </ResourceDictionary>
                         </Button.Resources>
                     </Button>
-                </StackPanel>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Авторассылка" Margin="-2,-2,-112,0">

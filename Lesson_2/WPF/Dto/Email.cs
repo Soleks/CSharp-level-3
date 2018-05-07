@@ -8,5 +8,10 @@ namespace WPF.Dto
         public string UserEmail { get; set; }
         [JsonProperty(PropertyName = "Password")]
         public string Password { get; set; }
+
+        public override string ToString()
+        {
+            return UserEmail;
+        }
     }
 }
