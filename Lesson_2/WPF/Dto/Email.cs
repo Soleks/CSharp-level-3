@@ -4,9 +4,9 @@ namespace WPF.Dto
 {
     public class Email
     {
-        [JsonProperty("Email")]
+        [JsonProperty(PropertyName = "Email")]
         public string UserEmail { get; set; }
-        [JsonProperty("Password")]
+        [JsonProperty(PropertyName = "Password")]
         public string Password { get; set; }
     }
 }

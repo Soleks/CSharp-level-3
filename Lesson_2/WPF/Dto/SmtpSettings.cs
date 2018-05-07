@@ -4,9 +4,9 @@ namespace WPF.Dto
 {
     public class SmtpSettings
     {
-        [JsonProperty("Address") ]
+        [JsonProperty(PropertyName ="Address")]
         public string Address { get; set; }
-        [JsonProperty("Port")]
+        [JsonProperty(PropertyName = "Port")]
         public int Port { get; set; }
     }
 }
