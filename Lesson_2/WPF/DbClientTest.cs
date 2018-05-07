@@ -43,7 +43,6 @@ namespace WPF
                         string passwd = reader.GetString(1);
                        
                         _emails.Add(
-                                 
                             new Dto.Email() { UserEmail = email, Password = passwd });
                     }
                 }
@@ -80,7 +79,6 @@ namespace WPF
                         }
 
                         _smtpSettings.Add(
-
                             new Dto.SmtpSettings() { Address = address,  Port = port });
                     }
                 }
@@ -90,6 +88,5 @@ namespace WPF
                 return _smtpSettings;
             }
         }
-
     }
 }
