@@ -19,14 +19,21 @@ namespace WPF
         public ObservableCollection<Dto.Email> SelectEmails()
         {
             string sqlQuery =
-             @"SELECT Email, Password FROM Email";
+             @"SELECT * FROM Email";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                try
+                {
+                    connection.Open();
+
+                } catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                SqlDataReader reader =
-                command.ExecuteReader(CommandBehavior.CloseConnection);
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
                 if (reader.HasRows)
                 {
@@ -50,7 +57,7 @@ namespace WPF
         public ObservableCollection<Dto.SmtpSettings> SelectSmtpSettings()
         {
             string sqlQuery =
-                @"SELECT Email, Email, Password FROM Mail";
+                @"SELECT Address, Port FROM SmtpSettings";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
