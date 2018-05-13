@@ -73,10 +73,9 @@ namespace MailSender.ViewModel
                 RaisePropertyChanged(nameof(Email));
             }
         }
+
         public string Message { get; set; }
         public string Theme { get; set; }
-        public string Pass { get; set; }
-
-        
+        public string Pass { get; set; }       
     }
 }

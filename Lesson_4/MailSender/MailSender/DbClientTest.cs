@@ -6,11 +6,18 @@ using System.Configuration;
 
 namespace MailSender
 {
-    class DbClientTest
+    public class DbClientTest
     {
-        private ObservableCollection<Dto.Email> _emails = new ObservableCollection<Dto.Email>();
-        private ObservableCollection<Dto.SmtpSettings> _smtpSettings = new ObservableCollection<Dto.SmtpSettings>();
-        private string connectionString = ConfigurationManager.ConnectionStrings["Mail"].ConnectionString;
+        private ObservableCollection<Dto.Email> _emails;
+        private ObservableCollection<Dto.SmtpSettings> _smtpSettings;
+        private string connectionString;
+
+        public DbClientTest()
+        {
+            _emails = new ObservableCollection<Dto.Email>();
+            _smtpSettings = new ObservableCollection<Dto.SmtpSettings>();
+            connectionString = ConfigurationManager.ConnectionStrings["Mail"].ConnectionString;
+        }
 
         public ObservableCollection<Dto.Email> SelectEmails()
         {
@@ -36,10 +43,9 @@ namespace MailSender
                     while (reader.Read())
                     {
                         string email = reader.GetString(1);
-                        string passwd = reader.GetString(2);
                        
                         _emails.Add(
-                            new Dto.Email() { UserEmail = email, Password = passwd });
+                            new Dto.Email() { UserEmail = email });
                     }
                 }
 
@@ -84,8 +90,6 @@ namespace MailSender
             string sqlQuery =
                 $@"INSERT INTO Email(email) VALUES('{email}')";
 
-            //$@"INSERT INTO Lesson7(Department, FirstName, LastName) VALUES('{depart}', '{firstName}', '{lastName}')";
-
             Connect(sqlQuery);
         }
 
@@ -106,6 +110,5 @@ namespace MailSender
                 int number = command.ExecuteNonQuery();
             }
         }
-
     }
 }
