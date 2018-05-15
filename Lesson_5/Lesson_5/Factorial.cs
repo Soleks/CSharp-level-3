@@ -5,12 +5,12 @@ namespace Lesson_5
 {
     public class Factorial
     {
-        private int _num;
-        private int _factorial;
+        private double _num;
+        private double _factorial;
         private object _lock;
-        private int _i;
+        private double _i;
 
-        public Factorial(int num)
+        public Factorial(double num)
         {
             _num = num;
             _lock = new object();
@@ -29,7 +29,7 @@ namespace Lesson_5
 
                 _i++;
                 
-                Console.WriteLine($"{Thread.CurrentThread.Name} _factorial {_num} = {_factorial}");
+                Console.WriteLine($"{Thread.CurrentThread.Name} {_factorial}");
             }
         }
     }

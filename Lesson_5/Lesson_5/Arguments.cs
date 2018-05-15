@@ -1,7 +1,11 @@
-﻿namespace Lesson_5
+﻿using System.Collections.Generic;
+
+namespace Lesson_5
 {
     public class Arguments
     {
-        public int Value { get; set; }
+        public double Value { get; set; }
+
+        public List<int> ListValues { get; set; }
     }
 }
