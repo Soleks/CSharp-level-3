@@ -11,6 +11,7 @@ namespace Lesson_5
         static void Main(string[] args)
         {
             //a. факториал числа N, которое вводится с клавиатуру; 
+            Console.Write("Задание а\n");
             Console.Write("Введите число : ");
 
             Arguments arg = new Arguments()
@@ -28,13 +29,35 @@ namespace Lesson_5
                 };
 
                 thread.Start();
+                thread.Join();
             }
 
             //b. сумму целых чисел до N
+
+            int value;
             Arguments arg2 = new Arguments()
             {
-                ListValues = new List<int>() { 1, 2, 3, 4, 5 }
+                ListValues = new List<int>()
             };
+
+            Console.WriteLine("\n\n\n");          
+            
+            string console;
+
+            Console.WriteLine("Задание b");
+            Console.WriteLine("Вводите числа, подтверждая ввод нажатием Enter");
+            Console.WriteLine("Для выхода наберите null\n");
+
+            do
+            {
+                console = Console.ReadLine();
+                
+                if (int.TryParse(console, out value))
+                {
+                    arg2.ListValues.Add(value);
+                }
+            }
+            while (console.ToLowerInvariant() != "null");          
 
             SummValue sum = new SummValue(arg2.ListValues);
 
@@ -45,6 +68,7 @@ namespace Lesson_5
             };
 
             thread2.Start();
+            thread2.Join();
 
             Console.ReadLine();
         }
