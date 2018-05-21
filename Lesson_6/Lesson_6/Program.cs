@@ -9,7 +9,7 @@ namespace Lesson_6
             MassifHandler mh = new MassifHandler();
 
             mh.ShowArray();
-            mh.TaskRun();
+            mh.TaskRun().Wait();
 
             Console.ReadLine();
         }

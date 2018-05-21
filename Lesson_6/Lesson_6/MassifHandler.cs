@@ -95,22 +95,18 @@ namespace Lesson_6
             });
         }
 
-        public async void TaskRun()
+        public async Task TaskRun()
         {
-            Task[] tasks = new Task[2];
-
-            tasks[0] = MultiplyTask();
-            tasks[1] = ShowTask();
-
-            await Task.WhenAll(tasks);
+            await MultiplyTask();
+            await ShowTask();
         }
 
-        public async void MultiplyAsync()
+        public async Task MultiplyAsync()
         {
             await MultiplyTask();
         }
 
-        public async void ShowAsync()
+        public async Task ShowAsync()
         {
             await ShowTask();
         }
