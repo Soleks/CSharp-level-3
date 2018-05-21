@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson_6
 {
@@ -12,15 +8,10 @@ namespace Lesson_6
         {
             MassifHandler mh = new MassifHandler();
 
-            //mh.ShowArray();
-
-            //mh.MultiplyRun();
-            //mh.ShowArrayRes();
-
-            mh.Matr();
+            mh.ShowArray();
+            mh.TaskRun();
 
             Console.ReadLine();
-
         }
     }
 }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Lesson_6
 {
     public class MassifHandler
     {
-        private const int _size = 2;
+        private const int _size = 100;
         private int[,] _arrayX;
         private int[,] _arrayY;
         private int[,] _arrayResult;
@@ -23,8 +19,8 @@ namespace Lesson_6
             _rnd = new Random();
             Console.SetWindowSize(10, 60);
             Console.SetWindowSize(205, 63);
-            //Initializer();
-            InitializerDebug();
+            Console.Beep();
+            Initializer();
         }
 
         private void Initializer()
@@ -37,19 +33,6 @@ namespace Lesson_6
                     _arrayY[i, j] = _rnd.Next(1, 10);
                 }
             }
-        }
-
-        private void InitializerDebug()
-        {
-            _arrayX[0,0] = 1;
-            _arrayX[0,1] = 2;
-            _arrayX[1,0] = 3;
-            _arrayX[1,1] = 4;
-
-            _arrayY[0, 0] = 5;
-            _arrayY[0, 1] = 6;
-            _arrayY[1, 0] = 7;
-            _arrayY[1, 1] = 8;
         }
 
         public void ShowArray()
@@ -75,64 +58,79 @@ namespace Lesson_6
 
                 Console.WriteLine();
             }
+
+            Console.WriteLine();
         }
 
-        public void ShowArrayRes()
+        private Task ShowTask()
         {
-            for (int i = 0; i < _size; i++)
+            return Task.Run(() =>
             {
-                for (int j = 0; j < _size; j++)
+                for (int i = 0; i < _size; i++)
                 {
-                    Console.Write("{0} ", _arrayResult[i, j]);
-                }
-
-                Console.WriteLine();
-            }
-        }
-
-        public void Multiply()
-        {
-            _arrayResult[0,0] = _arrayX[0,0] * _arrayY[0,0] + _arrayX[0,1] * _arrayY[1,0];
-            _arrayResult[1,0] = _arrayX[1,0] * _arrayY[0,0] + _arrayX[1,1] * _arrayY[1,0];
-            _arrayResult[0,1] = _arrayX[0,0] * _arrayY[0,1] + _arrayX[0,1] * _arrayY[1,1];
-            _arrayResult[1,1] = _arrayX[1,0] * _arrayY[0,1] + _arrayX[1,1] * _arrayY[1,1];
-        }
-
-
-        public void Matr()
-        {
-
-        }
-
-        public void MultiplyRun()
-        {
-            /*
-               1 2   5 6
-               3 4   7 8
-
-               1*5 2*6
-               3*7 4*8
-               
-               5    12
-               
-               21   32
-             
-             */
-            for (int i = 0; i < _size; i++)
-            {
-                for (int j = 0; j < _size; j++)
-                {
-                    if (i == 0 && j == 0)
+                    for (int j = 0; j < _size; j++)
                     {
-                        int a = _arrayX[i, j] * _arrayY[i, j];
-
+                        Console.Write("{0} ", _arrayResult[i, j]);
                     }
-                    else
+
+                    Console.WriteLine();
+                }
+            });           
+        }
+
+        private Task MultiplyTask()
+        {
+            return Task.Run(() =>
+            {
+                for (int i = 0; i < _size; i++)
+                {
+                    for (int j = 0; j < _size; j++)
                     {
-                        int a = _arrayX[i, j] * _arrayY[i, j];
+                        _arrayResult[i, j] += _arrayX[i, j] * _arrayY[i, j];
                     }
                 }
-            }
+            });
+        }
+
+        public async void TaskRun()
+        {
+            Task[] tasks = new Task[2];
+
+            tasks[0] = MultiplyTask();
+            tasks[1] = ShowTask();
+
+            await Task.WhenAll(tasks);
+        }
+
+        public async void MultiplyAsync()
+        {
+            await MultiplyTask();
+        }
+
+        public async void ShowAsync()
+        {
+            await ShowTask();
+        }
+
+        public void MultiplyDebug()
+        {
+            _arrayResult[0, 0] = _arrayX[0, 0] * _arrayY[0, 0] + _arrayX[0, 1] * _arrayY[1, 0];
+            _arrayResult[1, 0] = _arrayX[1, 0] * _arrayY[0, 0] + _arrayX[1, 1] * _arrayY[1, 0];
+            _arrayResult[0, 1] = _arrayX[0, 0] * _arrayY[0, 1] + _arrayX[0, 1] * _arrayY[1, 1];
+            _arrayResult[1, 1] = _arrayX[1, 0] * _arrayY[0, 1] + _arrayX[1, 1] * _arrayY[1, 1];
+        }
+
+        private void InitializerDebug()
+        {
+            _arrayX[0, 0] = 1;
+            _arrayX[0, 1] = 2;
+            _arrayX[1, 0] = 3;
+            _arrayX[1, 1] = 4;
+
+            _arrayY[0, 0] = 5;
+            _arrayY[0, 1] = 6;
+            _arrayY[1, 0] = 7;
+            _arrayY[1, 1] = 8;
         }
     }
 }
