@@ -19,7 +19,7 @@ namespace Lesson_6
             _rnd = new Random();
             Console.SetWindowSize(10, 60);
             Console.SetWindowSize(205, 63);
-            Console.Beep();
+            Console.ForegroundColor = ConsoleColor.Green;
             Initializer();
         }
 
@@ -86,7 +86,10 @@ namespace Lesson_6
                 {
                     for (int j = 0; j < _size; j++)
                     {
-                        _arrayResult[i, j] += _arrayX[i, j] * _arrayY[i, j];
+                        for (int k = 0; k < _size; k++)
+                        {
+                            _arrayResult[i, j] += _arrayX[i, k] * _arrayY[k, j];
+                        }
                     }
                 }
             });
